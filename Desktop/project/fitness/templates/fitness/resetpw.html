@@ -1,0 +1,25 @@
+{%extends 'fitness/register.login.html'%}
+{%load static%}
+
+
+{%block content%}
+    <title>resetpw</title>
+{%endblock content%}  
+
+{%block content2%}
+<form method="POST" action="">
+    {%csrf_token%}
+    <div class=' w-75 mx-auto'>
+        {{form}}
+    </div>
+    <input type="submit" name="submit" class="form-control w-75 mx-auto"value="Reset"style="font-family:OratorStd;color:white; background-color:#21007F; border:0px">
+</form>
+<a href="{%url 'register'%}"><button>Need an account?</button></a>
+<a href="{%url 'login'%}"><button>Login</button></a>
+
+
+
+
+
+    
+{%endblock content2%}  

@@ -1,0 +1,73 @@
+@font-face {
+    font-family: OratorStd;
+    src: url(OratorStd.woff);
+  }
+.color{
+    font-family: OratorStd;
+    
+    background-color: #FF6A00;
+    color:#21007F;
+    
+}
+
+.color2{
+    font-family: OratorStd;
+    background-color: #21007F;
+    color: #FF6A00
+    
+}
+.size{
+    height:100%
+    
+}
+.font-size{
+    font-size: 50;
+    padding-top: 45%;
+    padding-left: 30%;
+}
+
+#login-button{
+    font-family: OratorStd;
+    font-size:50;
+    color: white;
+    background-color: #FF70B0;
+    height: 10%;
+    width: 100%;
+    border:none;
+}
+#register-button{
+    font-family: OratorStd;
+    font-size:50;
+    color: white;
+    background-color: #FF70B0;
+    height: 10%;
+    width: 100%;
+    border:none;
+    
+}
+.login-background{
+    height:50%;
+    background-color: #21007F;
+    
+}
+.login-border{
+    position: absolute; 
+    width: 20%;
+    height:40%;
+    margin-top: 200;
+    margin-left: 750;
+    z-index: 2;
+    background-color: #6A44FF;
+    box-shadow: 0px 0px 10px 2px green;
+}
+
+.navbar{
+    height: 7%;
+    background-color: #FF70B0;
+}
+input{
+    font-family:OratorStd;
+}
+button{
+    font-family:OratorStd;
+}

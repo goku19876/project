@@ -1,0 +1,26 @@
+{%load static%}
+<html>
+    <head>
+        {%block content%}
+
+        {%endblock content%}
+        <link rel="stylesheet" type ="text/css" href="{%static 'fitness/style.css'%}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+        
+        <div class="login-border rounded border-0">
+           {%block content2%}
+           
+           {%endblock content2%}
+        </div>
+        <div class="row login-background">
+            <div class='col-md-6 color'></div>
+            <div class='col-md-6 color2'></div>
+        </div>
+        <div class="row login-background" style="background-color: #FFB8A8;"></div>
+
+    </body>
+</html>

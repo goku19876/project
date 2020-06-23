@@ -1,0 +1,43 @@
+{%extends 'fitness/register.login.html'%}
+{%load static%}
+
+
+{%block content%}
+    <title>Login</title>
+{%endblock content%} 
+
+{%block content2%}
+<div class="pt-5">
+
+
+    <form method="POST" action="">
+        {%csrf_token%} 
+        <div class="form-group rounded">
+            <input class="form-control rounded text-center w-75 mx-auto"type="text"style="border:0px;font-family:OratorStd;" name="username" placeholder="USERNAME">
+        </div>
+        <div class="form-group rounded" >
+            <input class="rounded form-control text-center w-75 mx-auto"style="border:0px; font-family:OratorStd;" type="password" name="password"placeholder="PASSWORD">
+        </div>
+        <div>
+            <input class="form-control w-75 mx-auto"type="submit" name="submit" value="LOGIN" style="font-family:OratorStd;color:white;background-color:#21007F; border:0px;">
+        </div>  
+    </form>
+<div class="rounded">
+        <a href="{%url 'register'%}">
+        <button class="rounded bg-transparent form-control"style="border: 0;color:white; font-family:OratorStd;">
+            NEED AN ACCOUNT?
+        </button></a><br>
+        <a href="{%url 'reset_password'%}">
+            <button class="rounded bg-transparent form-control" style="border: 0;color:white; font-family:OratorStd;">
+            Forgot your password?
+        </button></a>
+
+</div>
+</div>
+
+
+
+{%for message in messages%}
+<p>{{message}}</p>
+{%endfor%}
+{%endblock content2%}  

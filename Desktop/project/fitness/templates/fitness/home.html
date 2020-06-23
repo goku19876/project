@@ -1,0 +1,110 @@
+{%load static%}
+<html>
+    <head>
+        <title>Home page</title>
+        <link rel="stylesheet" type ="text/css" href="{%static 'fitness/style.css'%}">
+        <link rel="stylesheet" type ="text/css" href="{%static 'fitness/home_style.css'%}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+
+    </head>
+    <body>
+        <div>
+        <nav class="navbar navbar fixed-top">
+            
+                <button class='btn' style="width: 20%; border:none; background-color: 21007F; color: white;">Exercises</button>
+                <button class='btn' style="width: 20%; border:none; background-color: 21007F; color: white;" >Swoley Bible</button>
+                <button class='btn' style="width: 20%; border:none; background-color: 21007F; color: white;">FAQ</button>
+                <div class="dropdown show" style="z-index: 1;">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Dropdown link
+                    </a>
+                  
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                <a href="{%url 'logoutPage'%}" name="logout"><button class="btn btn-primary btn-sm">Logout</button></a>
+
+                
+                
+            <!-- Navbar content -->
+          </nav>
+        </div>
+        
+        
+        
+        
+        
+        
+        <!-- findaworkout/createaworkout section -->
+        <div class='container-fluid red' style="background-color: yellow;">
+            <div class='row'style="height: 60%;">
+                
+                <div class='col color text-center'>
+                    <div> <!--textbox-->
+                        <br><br><br><br><br><br><br>
+                        <span class=' display-3'>Find</span><br>
+                        <span class=' display-3'>a</span><br>
+                        <span class=' display-3'>Workout</span>
+                    </div>
+                    
+                </div>
+                <div class='col color2 text-center display-3'>
+                    <div><!--textbox-->
+                        <br><br>
+                        <span class=' display-3'>Create</span><br>
+                        <span class=' display-3'>a</span><br>
+                        <span class=' display-3'>Workout</span>
+                    </div>
+                    
+                </div>
+               
+            </div>
+        </div>
+        <!-- endsection -->
+        <div class='row'>
+            <div class='col red'>
+                <form method="POST" action="">
+                    {%csrf_token%}
+                    {{form}}
+                    <input type='submit' name="Register">
+                  </form>
+                    Hello, {{user}}
+                    {%for message in messages%}
+                    <p>{{message}}</p>
+                    {%endfor%}
+                    {%for goal in goal%}
+                    <p>{{goal}} | {{goal.date}}</p>
+                    {%endfor%}
+            </div>
+            <div class='col'>
+                {% autoescape off %}
+                {{ plot }}
+                {% endautoescape %}
+            </div>
+            
+        </div>
+    
+    
+    
+    
+        
+        
+       
+            
+        
+    
+        
+        
+        
+    
+        
+        
+    </body>
+    </html>
