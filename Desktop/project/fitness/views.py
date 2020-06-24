@@ -11,22 +11,19 @@ from .models import Goal
 from plotly.offline import plot
 import plotly.graph_objs as go
 from plotly.graph_objs import Scatter
+from django.shortcuts import get_object_or_404
 # Create your views here.
 @login_required
 def home(request):
+    
+            
     form = GoalForm(initial={'user':request.user})
     all_goals = Goal.objects.filter(user = request.user)
-    
 
-    
-                        
-                    
-
-    if request.method =='POST':
+    if request.method =='POST' and 'submit_goal' in request.POST:
         form = GoalForm(request.POST)
-        
+
         if form.is_valid():
-            
             form.save(commit=False)
             form.instance.user = request.user
             form.save()
@@ -35,12 +32,23 @@ def home(request):
         else:
             form = GoalForm()
             return redirect('home')
-        
-
-
-
+    
+    
     context={'form':form,'user':request.user,'goal':all_goals}
     return render(request,'fitness/home.html',context)
+
+def deleteGoal(request,goal_id):
+    if request.method =="POST":
+        goal = Goal.objects.get(id=goal_id)
+    
+    goal.delete()
+
+
+    return redirect('home')
+    
+
+        
+    
 
 
 def loginPage(request):

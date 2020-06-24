@@ -10,6 +10,7 @@ class GoalForm(forms.ModelForm):
     class Meta:
         model = Goal
         fields=['goal']
+        
 class PasswordResetForm(forms.Form):
     email = forms.CharField(max_length=100 , widget=forms.EmailInput(attrs={'class':"form-control rounded text-center w-75 mx-auto",'style':"font-family:OratorStd;",'placeholder':'EMAIL'}))
     class Meta:

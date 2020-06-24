@@ -70,18 +70,27 @@
         <!-- endsection -->
         <div class='row'>
             <div class='col red'>
+                
                 <form method="POST" action="">
                     {%csrf_token%}
                     {{form}}
-                    <input type='submit' name="Register">
+                    <input type='submit' name="submit_goal">
                   </form>
                     Hello, {{user}}
                     {%for message in messages%}
                     <p>{{message}}</p>
                     {%endfor%}
-                    {%for goal in goal%}
-                    <p>{{goal}} | {{goal.date}}</p>
+                    {%for i in goal%}
+                    <!-- {%with goal_id=goal.id%} -->
+                    <p>{{i}} | {{i.date}} | {{i.id}}</p>
+                    <form method="POST" action="{%url 'deleteGoal' i.id%}" >
+                        {%csrf_token%}
+                        <input type='submit' name='delete_goal' value='delete'>
+                    </form>
+                    
+                    <!-- {%endwith%} -->
                     {%endfor%}
+
             </div>
             <div class='col'>
                 {% autoescape off %}
