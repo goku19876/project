@@ -38,6 +38,7 @@ def home(request):
     return render(request,'fitness/home.html',context)
 
 def deleteGoal(request,goal_id):
+    
     if request.method =="POST":
         goal = Goal.objects.get(id=goal_id)
     

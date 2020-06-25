@@ -20,7 +20,6 @@ from django.contrib.auth import views as auth_views
 from forms import PasswordResetForm
 from django.shortcuts import get_object_or_404
 
-
 urlpatterns = [
     url('home',views.home,name="home"),
     url('login',views.loginPage,name="login"),
@@ -29,11 +28,7 @@ urlpatterns = [
     url('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name='fitness/resetpw_sent.html'), name="password_reset_done"),
     url(r'^reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
     url('reset_password_complete/',auth_views.PasswordResetCompleteView.as_view(),name="password_reset_complete"),
-    url(r'deletegoal/(?P<goal_id>[\S]+)', views.deleteGoal, name='deleteGoal'),
-    
-
-
-
+    url(r'(?P<goal_id>[\S]+)', views.deleteGoal, name='deleteGoal'),
     url('logout', views.logoutUser,name="logoutPage"),
     url('',views.default,name="default"),
     
