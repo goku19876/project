@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 from multiselectfield import MultiSelectField
+from fitness.models import Routine
 
 
 
@@ -21,7 +22,6 @@ class Exercise(models.Model):
     name = models.CharField(max_length=20,null=True)
     description = models.CharField(max_length=100,null=True)
     equipment_needed = MultiSelectField(choices=equipment_choices)
-
     def __str__(self):
         return self.name
         

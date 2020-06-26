@@ -90,14 +90,23 @@
                     {%endfor%}
 
             </div>
-            <div class='col'>
-                {% autoescape off %}
-                {{ plot }}
-                {% endautoescape %}
-            </div>
             
+            <div class='col'>
+                {%for i in routine%}
+                
+               Routine: <p>{{i}} | 
+                   {%for j in i.exercises.all%}
+                        {{j}}
+                    {%endfor%}
+                   <!-- {{i.exercises.all}} --></p>
+                
+                
+                {%endfor%}
+                
+                
+            </div>
         </div>
-    
+        
     
     
     

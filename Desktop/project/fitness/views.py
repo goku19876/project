@@ -7,11 +7,12 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout,get_user
 from django.contrib.auth.decorators import login_required
 from .forms import GoalForm
-from .models import Goal
+from .models import Goal, Routine
 from plotly.offline import plot
 import plotly.graph_objs as go
 from plotly.graph_objs import Scatter
 from django.shortcuts import get_object_or_404
+
 # Create your views here.
 @login_required
 def home(request):
@@ -19,7 +20,13 @@ def home(request):
             
     form = GoalForm(initial={'user':request.user})
     all_goals = Goal.objects.filter(user = request.user)
+    #routines = Routine.objects.filter(name='hello')
+    #routines=Routine.objects.get(name='hello').exercise_set.all()
+    routine = Routine.objects.filter(user=request.user)
+    #objects = routine.exercises.all()
+    #objects = Routine.objects.get('hello').exercises.all()
 
+    
     if request.method =='POST' and 'submit_goal' in request.POST:
         form = GoalForm(request.POST)
 
@@ -34,15 +41,14 @@ def home(request):
             return redirect('home')
     
     
-    context={'form':form,'user':request.user,'goal':all_goals}
+    context={'form':form,'user':request.user,'goal':all_goals,'routine':routine}
     return render(request,'fitness/home.html',context)
 
 def deleteGoal(request,goal_id):
     
-    if request.method =="POST":
+    if request.method =="POST" :
         goal = Goal.objects.get(id=goal_id)
-    
-    goal.delete()
+        goal.delete()
 
 
     return redirect('home')

@@ -5,7 +5,9 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 import uuid
-from django.shortcuts import get_object_or_404
+from multiselectfield import MultiSelectField
+#from django.shortcuts import get_object_or_404
+# from main.models import Exercise as Exercise
 
 # Create your models here.
 class Goal(models.Model):
@@ -19,5 +21,14 @@ class Goal(models.Model):
 
     def save(self):
         super(Goal,self).save()
+
+class Routine(models.Model):
+    name = models.CharField(auto_created=True, null=True,max_length=30)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    exercises = models.ManyToManyField('main.Exercise',related_name='routines')
+    #exercises = MultiSelectField(choices=exercise_choices)
+    def __str__(self):
+        return str(self.name)
+    
     
 
