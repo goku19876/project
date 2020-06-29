@@ -6,7 +6,7 @@ from .forms import CreateUserForm,ModelForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout,get_user
 from django.contrib.auth.decorators import login_required
-from .forms import GoalForm
+from .forms import GoalForm,RoutineForm
 from .models import Goal, Routine
 from plotly.offline import plot
 import plotly.graph_objs as go
@@ -14,17 +14,34 @@ from plotly.graph_objs import Scatter
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
+def routine(request):
+    form = RoutineForm()
+    if request.method=="POST":
+        form = RoutineForm(request.POST)
+        form.instance.user = request.user
+        form.save()
+    context={
+        'routineForm':form,
+        'user':request.user
+    }
+    
+    return render(request,'fitness/routine.html',context)
+def customizeRoutine(request,routine_id):
+    form = Routine.objects.filter(id=routine_id)
+    if request.method =="POST":
+        pass
+        
+    context={
+
+    }
+    render(request,'fitness/routine.html',context)
 @login_required
 def home(request):
     
             
-    form = GoalForm(initial={'user':request.user})
+    form = GoalForm()
     all_goals = Goal.objects.filter(user = request.user)
-    #routines = Routine.objects.filter(name='hello')
-    #routines=Routine.objects.get(name='hello').exercise_set.all()
     routine = Routine.objects.filter(user=request.user)
-    #objects = routine.exercises.all()
-    #objects = Routine.objects.get('hello').exercises.all()
 
     
     if request.method =='POST' and 'submit_goal' in request.POST:

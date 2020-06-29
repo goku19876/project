@@ -2,14 +2,17 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm,PasswordResetForm
 from django.contrib.auth.models import User
-from .models import Goal
+from .models import Goal,Routine
 
 class GoalForm(forms.ModelForm):
-    #goalform = forms.CharField(max_length=1000)
     
     class Meta:
         model = Goal
         fields=['goal']
+class RoutineForm(forms.ModelForm):
+    class Meta:
+        model = Routine
+        fields=['exercises','name']
         
 class PasswordResetForm(forms.Form):
     email = forms.CharField(max_length=100 , widget=forms.EmailInput(attrs={'class':"form-control rounded text-center w-75 mx-auto",'style':"font-family:OratorStd;",'placeholder':'EMAIL'}))

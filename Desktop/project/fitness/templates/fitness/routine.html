@@ -1,0 +1,13 @@
+{%load static%}
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form method="POST">
+            {%csrf_token%}
+            {{routineForm}}
+            <input type="submit" name='submit'>
+        </form>
+    </body>
+</html>

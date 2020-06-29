@@ -24,7 +24,7 @@ class Goal(models.Model):
 
 class Routine(models.Model):
     name = models.CharField(auto_created=True, null=True,max_length=30)
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     exercises = models.ManyToManyField('main.Exercise',related_name='routines')
     #exercises = MultiSelectField(choices=exercise_choices)
     def __str__(self):

@@ -30,6 +30,8 @@ urlpatterns = [
     url('reset_password_complete/',auth_views.PasswordResetCompleteView.as_view(),name="password_reset_complete"),
     url(r'delete/(?P<goal_id>[\S]+)', views.deleteGoal, name='deleteGoal'),
     url('logout', views.logoutUser,name="logoutPage"),
+    url('routine', views.routine,name="routinePage"),
+    url(r'routine/(?P<routine_id>[\S]+)', views.customizeRoutine, name='customizeRoutine'),
     url('',views.default,name="default"),
     
 

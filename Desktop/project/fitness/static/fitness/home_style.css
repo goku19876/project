@@ -9,4 +9,12 @@
 button{
     font-family:OratorStd;
 }
+#edit{
+    
+    background-color:white;
+    border:0;
+    box-shadow: 0px 0px 2px  black;
+
+    
+}
 

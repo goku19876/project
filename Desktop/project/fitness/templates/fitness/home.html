@@ -94,12 +94,14 @@
             <div class='col'>
                 {%for i in routine%}
                 
-               Routine: <p>{{i}} | 
+
+               Routine: <p>{{i}} | {{i.id}}|
                    {%for j in i.exercises.all%}
                         {{j}}
-                    {%endfor%}
+                        
+                    {%endfor%}<a href="{%url 'customizeRoutine' i.pk %}"><button id='edit'>Customize</button></a>
+
                    <!-- {{i.exercises.all}} --></p>
-                
                 
                 {%endfor%}
                 
