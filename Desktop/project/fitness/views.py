@@ -6,12 +6,13 @@ from .forms import CreateUserForm,ModelForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout,get_user
 from django.contrib.auth.decorators import login_required
-from .forms import GoalForm,RoutineForm
+from .forms import GoalForm,RoutineForm,PhoneForm
 from .models import Goal, Routine
 from plotly.offline import plot
 import plotly.graph_objs as go
 from plotly.graph_objs import Scatter
 from django.shortcuts import get_object_or_404
+from twilio.rest import Client
 
 # Create your views here.
 def routine(request):
@@ -42,7 +43,7 @@ def home(request):
     form = GoalForm()
     all_goals = Goal.objects.filter(user = request.user)
     routine = Routine.objects.filter(user=request.user)
-
+    phone=PhoneForm()
     
     if request.method =='POST' and 'submit_goal' in request.POST:
         form = GoalForm(request.POST)
@@ -56,9 +57,26 @@ def home(request):
         else:
             form = GoalForm()
             return redirect('home')
+    if request.method=='POST' and 'submit_number' in request.POST:
+        
+        account_sid = "ACd201f574e9f63cbe8aca15e13011e383"
+        auth_token  = "abc8011069944c8539d0ea4371323c8f"
+        client = Client(account_sid, auth_token)
+        number=request.POST.get('phonenumber')
+        text = request.POST.get('text')
+        message = client.messages.create(
+            to=number, 
+            from_="+12055095109",
+            body=text)
     
     
-    context={'form':form,'user':request.user,'goal':all_goals,'routine':routine}
+    context={
+        'form':form,
+        'user':request.user,
+        'goal':all_goals,
+        'routine':routine,
+        'phone':phone,
+    }
     return render(request,'fitness/home.html',context)
 
 def deleteGoal(request,goal_id):

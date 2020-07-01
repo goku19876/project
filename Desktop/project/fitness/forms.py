@@ -18,7 +18,11 @@ class PasswordResetForm(forms.Form):
     email = forms.CharField(max_length=100 , widget=forms.EmailInput(attrs={'class':"form-control rounded text-center w-75 mx-auto",'style':"font-family:OratorStd;",'placeholder':'EMAIL'}))
     class Meta:
         fields=['email']
-    
+class PhoneForm(forms.Form):
+    phonenumber = forms.IntegerField()
+    text = forms.CharField(max_length=50)
+    class Meta:
+        fields=['phonenumber','text']
 
     
     

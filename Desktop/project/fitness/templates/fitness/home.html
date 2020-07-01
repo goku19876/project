@@ -88,6 +88,12 @@
                     </form>
                     
                     {%endfor%}
+                    <form method="POST">
+                        {%csrf_token%}
+                        number:{{phone.phonenumber}}
+                        text:{{phone.text}}
+                        <input type="submit" name="submit_number"value='text me'>
+                    </form>
 
             </div>
             
@@ -108,6 +114,7 @@
                 
             </div>
         </div>
+        
         
     
     
