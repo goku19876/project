@@ -60,7 +60,7 @@ def home(request):
     if request.method=='POST' and 'submit_number' in request.POST:
         
         account_sid = "ACd201f574e9f63cbe8aca15e13011e383"
-        auth_token  = "abc8011069944c8539d0ea4371323c8f"
+        auth_token  = "00215b58f89df15c249b1c48f3db4a19"
         client = Client(account_sid, auth_token)
         number=request.POST.get('phonenumber')
         text = request.POST.get('text')
